@@ -1,0 +1,5 @@
+export interface ConvertEntity {
+    from : string;
+    fromAmount: number;
+    to : string;
+}

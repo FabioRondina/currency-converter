@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Currency Converter</h1>
+
+  <div>
+    <form [formGroup]="converterFormGroup">
+      <div class="row">
+        <mat-label>From</mat-label>
+        <mat-form-field appareance="outline">
+          <mat-select Placeholder="Select currency to convert" formController="fromCurrency" (selectionChange) = "convertAmount()">
+
+            <mat-option *ngFor = "let currency of currencyList" value="currency">
+            {{currency}}
+             </mat-option>
+            
+          </mat-select>
+        </mat-form-field>
+        <mat-label>Amount to Convert</mat-label>
+        <mat-form-field appareance="outline">
+          <input
+            mat-input
+            type="number"
+            Placeholder="Amount to Convert"
+            formController="fromAmount" (keydown.enter)="convertAmount()"
+          />
+        </mat-form-field>
+        <mat-label>To</mat-label>
+        <mat-form-field appareance="outline">
+          <mat-select
+            Placeholder="Select target currency" formController="toCurrency" (selectionChange) = "convertAmount()">  
+            <mat-option *ngFor = "let currency of currencyList" value="currency">
+                {{currency}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      </form>
+      <div class="row">        
+        <mat-label>Converted Amount</mat-label>
+        <mat-form-field appareance="outline">
+          <input mat-input type="number" Placeholder="Amount to Convert" [value] = "convertedAmount"/>
+        </mat-form-field>
+      </div>
+  </div>
+</div>
+
